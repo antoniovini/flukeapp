@@ -4,6 +4,7 @@ import { useTheme } from 'react-native-paper';
 import { Container, TabsContainer, TabItem, Text } from './styles';
 
 const TabMenu = ({ children, selected=0, tabs=[], onSelect=()=>{}}) => {
+  // get the theme colors from the context
   const { colors } = useTheme();
 
   return (

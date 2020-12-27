@@ -4,6 +4,7 @@ import { useTheme } from 'react-native-paper';
 import { Card as StyledCard } from './styles';
 
 const Card = ({children}) => {
+  // get the theme colors from the context
   const { colors } = useTheme();
 
   return (

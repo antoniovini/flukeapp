@@ -16,29 +16,27 @@ import Home from '../screens/Home';
 import Historic from '../screens/Historic';
 
 const App = () => {
+  // map the bottom navigation
   const [index, setIndex] = useState(1);
   const [routes] = useState([
     {key: 'historic', title: "Histórico", icon: 'update'},
     {key: 'home', title: "Ínicio", icon: 'home'}
   ]);
 
+  // used by react native paper to select to render scene
   const renderScene = BottomNavigation.SceneMap({
     home: Home,
     historic: Historic
   });
 
   useEffect(() => {
+    // hide splashcreen when the apps start
     SplashScreen.hide();
   }, []);
-
-  // TODO - DELETE NATIVE ROUTER FROM APP
 
   return (
     <Container theme={appTheme}>
       <StatusBar backgroundColor='white' barStyle='dark-content' />
-      {/* <NativeRouter>
-        <Route exact path='/' component={Home} />
-      </NativeRouter> */}
       <BottomNavigation 
         navigationState={{index, routes}}
         onIndexChange={setIndex}

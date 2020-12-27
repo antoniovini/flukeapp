@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react';
-import {Linking, ScrollView} from 'react-native';
+import {Linking, ScrollView, Dimensions} from 'react-native';
 import {ActivityIndicator, Appbar as AppbarPaper, useTheme} from 'react-native-paper';
 
 import Appbar from '../../components/Appbar';
@@ -8,9 +8,8 @@ import MenuItem from '../../components/MenuItem';
 import ScrollableMenu from '../../components/ScrollableMenu';
 import Card from '../../components/Card';
 
-import { fetchConsumption } from '../../controllers/consumption';
-
-import { Dimensions } from 'react-native';
+import { fetchConsumption } from '../../services/consumption';
+import { fetchPackage } from '../../services/package';
 
 import {
   Container, 
@@ -25,7 +24,6 @@ import {
 } from './styles';
 
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
-import { fetchPackage } from '../../controllers/package';
 
 const width = Math.floor(Dimensions.get('window').width);
 

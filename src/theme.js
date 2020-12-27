@@ -1,5 +1,6 @@
 import { DefaultTheme, configureFonts } from 'react-native-paper';
 
+// create font configuration
 const fontConfig = {
   web: {
     regular: {
@@ -57,6 +58,7 @@ const fontConfig = {
   },
 };
 
+// create the app theme
 const appTheme = {
   ...DefaultTheme,
   colors:{

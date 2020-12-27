@@ -15,19 +15,25 @@ import {
   PaginatorContainer
 } from './styles';
 
-const width = Math.floor(Dimensions.get('window').width);
-
 const ScrollableMenu = ({ children, selected=0 }) => {
+  // get the theme colors from the context
   const { colors } = useTheme();
+
+  // create ref to scroll the ScrollView
   const ref = useRef(null);
 
+  // animation data
   const selectedWidth = useSharedValue(10, true);
 
   useEffect(() => {
+    // reset the animation value
     selectedWidth.value = 10;
+
+    // apply the animation in 500 ms
     selectedWidth.value = withTiming(60, { duration: 500 });
 
     if(ref.current){
+      // scroll the scroll view to selected prop
       ref.current.scrollTo({x: selected * 120, y: 0, animated: true});
     }
   }, [selected]);

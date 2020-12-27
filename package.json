@@ -20,7 +20,6 @@
     "react-native-svg": "^12.1.0",
     "react-native-svg-charts": "^5.4.0",
     "react-native-vector-icons": "^7.1.0",
-    "react-router-native": "^5.2.0",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {

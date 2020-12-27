@@ -1,26 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import {fetchConsumption} from '../../controllers/consumption';
 
+import {Linking} from 'react-native';
+import {Text} from 'react-native-svg';
+import * as scale from 'd3-scale';
 import {BarChart, XAxis} from 'react-native-svg-charts';
-
-import {
-  Container, 
-  Content, 
-  ChartContainer,
-  LoadingContainer
-} from './styles';
 import {
   ActivityIndicator,
   useTheme,
   Appbar as AppbarPaper,
 } from 'react-native-paper';
 
-import * as scale from 'd3-scale';
-import {Text} from 'react-native-svg';
 import Appbar from '../../components/Appbar';
 import TabMenu from '../../components/TabMenu';
 import Paginator from '../../components/Paginator';
-import {Linking} from 'react-native';
+
+import {fetchConsumption} from '../../services/consumption';
+import {Container, Content, ChartContainer, LoadingContainer} from './styles';
 
 const days = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
 
@@ -33,22 +28,29 @@ const Historic = () => {
   const {colors} = useTheme();
 
   useEffect(() => {
-    // dates this month
+    // date represents today
     const today = new Date('2020-08-21');
     setDate(today);
   }, []);
 
   useEffect(() => {
     if (date) {
+      // start the loading
       setLoading(true);
+
+      // get the date of one week ago
       const oneWeekAgo = new Date(date - 6 * 24 * 60 * 60 * 1000);
+
+      // fetch the user consumption
       fetchConsumption(oneWeekAgo, date)
         .then((res) => {
+          // create the data to place in chart
           const voices = res.map((item) => {
             const itemDate = new Date(item.date);
             const day = days[itemDate.getDay()];
             return {value: item.voice, label: `${itemDate.getDate()}. ${day}`};
           });
+          // create the data to place in chart
           const data = res.map((item) => {
             const itemDate = new Date(item.date);
             const day = days[itemDate.getDay()];
@@ -57,13 +59,17 @@ const Historic = () => {
               label: `${itemDate.getDate()}. ${day}`,
             };
           });
+
+          // set the data state
           setConsumption({voices, data});
+          // stop the loading
           setLoading(false);
         })
         .catch((e) => console.log(e));
     }
   }, [date]);
 
+  // format the charts labels
   const Labels = ({x, y, bandwidth, data}) =>
     data.map((value, index) => (
       <Text
@@ -77,20 +83,22 @@ const Historic = () => {
         {value}
       </Text>
     ));
-  
+
+  // create the cut off limiar to put label inside or outside the
+  // chart bar
   const getCutOff = () => {
     let cutoff = 0;
 
-    if(selected === 0){
+    if (selected === 0) {
       const values = consumption.data.map((item) => item.value);
-      cutoff = values.reduce((prev, curr) => prev < curr ? curr : prev, 0);
-    }else{
+      cutoff = values.reduce((prev, curr) => (prev < curr ? curr : prev), 0);
+    } else {
       const values = consumption.voices.map((item) => item.value);
-      cutoff = values.reduce((prev, curr) => prev < curr ? curr : prev, 0);
+      cutoff = values.reduce((prev, curr) => (prev < curr ? curr : prev), 0);
     }
 
     return cutoff / 2 > 40 ? cutoff : cutoff / 2;
-  }
+  };
 
   return (
     <Container>
@@ -111,10 +119,7 @@ const Historic = () => {
       </Appbar>
       {loading ? (
         <LoadingContainer>
-          <ActivityIndicator
-            size={'large'}
-            color="black"
-          />
+          <ActivityIndicator size={'large'} color="black" />
         </LoadingContainer>
       ) : (
         <Content>
@@ -154,7 +159,7 @@ const Historic = () => {
                   }
                 }}
                 onBack={() => {
-                  if(date.getTime() > new Date('2020-08-01').getTime()){
+                  if (date.getTime() > new Date('2020-08-01').getTime()) {
                     const copiedDate = new Date(date.getTime());
                     copiedDate.setDate(copiedDate.getDate() - 1);
                     setDate(copiedDate);
@@ -195,7 +200,7 @@ const Historic = () => {
                   }
                 }}
                 onBack={() => {
-                  if(date.getTime() > new Date('2020-08-01').getTime()){
+                  if (date.getTime() > new Date('2020-08-01').getTime()) {
                     const copiedDate = new Date(date.getTime());
                     copiedDate.setDate(copiedDate.getDate() - 1);
                     setDate(copiedDate);
