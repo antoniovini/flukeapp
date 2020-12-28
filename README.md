@@ -46,10 +46,12 @@ fator que me preocupou bastante sabendo que tinha 7 dias para entregar o projeto
 Então comecei a planejar o que eu iria fazer. Comecei buscando na internet referências sobre o próprio aplicativo da Fluke,
 foi então que juntei algumas imagens na minha pasta de assets que continham tudo que eu precisava para este desafio.
 
-Criei então o projeto utilizando o React Native CLI e configurei o projeto base instalando as seguintes libs:
+Criei então o projeto no dia 26/12/2020 utilizando o React Native CLI e configurei o projeto base instalando as seguintes libs:
 
   - [Styled Components](https://styled-components.com/)
   - [React Router](https://reactrouter.com/)
+  
+Como havia recebido dia 22/12/2020 sabia que tinha que entregar até dia 29/12/2020.
 
 ### A Página Inicial
 
