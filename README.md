@@ -112,4 +112,4 @@ Adicionei também os testes do jest para as requisições da aplicação, deixan
 
 O exercício 2 foi implementado dentro dos próprios testes do Jest.
 
-Pode ser encontrado na pasta *__tests__/Challenge-test.js*.
+Pode ser encontrado na pasta *\_\_tests\_\_/Challenge-test.js*.
