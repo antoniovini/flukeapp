@@ -68,7 +68,37 @@ Colocando os *Cards* no lugar eu precisava criar todo o conteúdo para eles, ent
 
 Agora eu precisava criar as conexões com o back-end da Fluke, então instalei a lib [Axios](https://github.com/axios/axios) que eu utilizaria para fazer as requisições HTTP.
 
-Criei então a pasta *services* que teriam as funções de conexão com o servidor, e implementei em dois arquivos separados (package.js e consumption.js) cada uma das requisições que eu precisava fazer.
+Criei então a pasta *services* que teriam as funções de conexão com o servidor, e implementei em dois arquivos separados *(package.js e consumption.js)* cada uma das requisições que eu precisava fazer.
+
+Chamando os serviços na minha página *Home* pude ver tudo funcionar como esperado.
+
+### Páginas e Rotas
+
+Ao finalizar a página inicial eu precisava de alguma forma para trocar entre páginas, como havia planejado utilizar o [React Router](https://reactrouter.com/) para esta
+tarefa, implementei todo o sitema para isto.
+
+Nesse tempo eu fui buscar um componente para que essa troca de tela pudesse ser feita, então me deparei com o *Bottom Navigation* da própria [React Native Paper](https://callstack.github.io/react-native-paper/) que me serviu como uma luva. Como este componente já tinha seu próprio sitema de gerênciamento de rotas eu pude excluir
+qualquer chamada ao [React Router](https://reactrouter.com/) o que fácilitou ainda mais minha vida.
+
+### A Página de Histórico
+
+Confesso que subestimei esta página e me surpreendi com alguns gargalos que eu tive nela.
+
+Iniciei implementando a própria *Appbar* que eu já havia criado.
+
+Então peguei e inseri os serviços de consumo nesta página também, armazenando a data que eu gostaria de verificar em um estado e o código calcula automaticamente a data de uma semana antes desta para poder ser feita a requisição para o servidor (startDate & endDate). Agora eu tinha em mãos as informações para mostrar para o usuário, mas como mostrar?
+
+Decidi utilizar alguma lib que forneciam gráficos, foi então que encontrei a [react-native-svg-charts](https://github.com/JesperLekland/react-native-svg-charts) que fornece gráficos de diversos tipos para o React Native. Depois de algum tempo configurando ela, consegui formatar os dados que recebo do servidor para servir a lib de gráficos.
+
+Após um longo tempo resolvendo estilos do gráfico eu finalmente havia finalizado, mas eu precisava mostrar o histórico tanto de minutos quanto os dados consumidos, então criei o componente *TabMenu* que facilita a seleção entre tabs. Configurei os dois Gráficos e agora podia trocar entre as duas informações.
+
+Por último decidi adicionar um paginador para o usuário poder fazer a viagem pelo histórico, essa foi a parte mais fácil, uma vez que só precisei estilizar o componente e quando o usuário avança ele apenas incrementa um dia a *startDate* e calcula a *endDate* baseada nesta nova data e atualiza o gráfico novamente.
+
+### Finalização
+
+Com isso eu tinha todo aplicativo finalizado, tinha então tempo para refatorar algumas partes e comentar todo o código.
+
+Adicionei também os testes do jest para as requisições da aplicação, deixando explicito a utilização para quem for pegar o código para manutenção.
 
 ## Resultado
 
