@@ -14,7 +14,7 @@ Antonio Vinicius
 
 ## Powered Using
 
-  ![JavaScript](https://img.shields.io/badge/-JavaScript-F7B93E?style=flat-square&logo=javascript&logoColor=fff)
+  ![JavaScript](https://img.shields.io/badge/-JavaScript-F7B93E?style=flat-square&logo=javascript&logoColor=000)
   ![React Native](https://img.shields.io/badge/-React%20Native-45b8d8?style=flat-square&logo=react&logoColor=white)
   ![Jest](https://img.shields.io/badge/-Jest-2ecc71?style=flat-square&logo=jest&logoColor=white)
 
