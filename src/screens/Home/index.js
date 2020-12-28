@@ -96,84 +96,88 @@ const Home = () => {
           }
         />
       </Appbar>
-      <ScrollableMenu selected={selected}>
-        <MenuItem
-          text="meus dados"
-          selected={selected === 0}
-          onPress={() => open(0)}
-        />
-        <MenuItem
-          text="meus minutos"
-          selected={selected === 1}
-          onPress={() => open(1)}
-        />
-      </ScrollableMenu>
       <ScrollView
-        horizontal
-        ref={scrollRef}
-        disableIntervalMomentum={true}
-        snapToInterval={width}
-        showsHorizontalScrollIndicator={false}
-        onMomentumScrollEnd={handleScroll}
-        style={{marginTop: 10}}
+        contentContainerStyle={{paddingBottom: 20}}
       >
-        <FullContainer>
-          { loading ? (
-            <LoadingContainer>
-              <ActivityIndicator
-                size={'large'}
-                color="black"
-              />
-            </LoadingContainer>
-          ) : (
-            <Card>
-              <AnimatedCircularProgress
-                size={180}
-                width={6}
-                fill={plan.percentage || 0}
-                rotation={0}
-                tintColor="#ffffff"
-                backgroundColor="#3d5875">
-                {(fill) => (
-                  <>
-                    <InlineView>
-                      <Title>{(plan.available * 0.001).toFixed(1)}</Title>
-                      <Normal
-                        style={{paddingBottom: 12}}
-                      >gb</Normal>
-                    </InlineView>
-                    <Text>disponíveis</Text>
-                  </>
-                )}
-              </AnimatedCircularProgress>
-              <CenterContainer>
-                <Text>de {(plan.subscription + plan.topup + plan.bonus) * 0.001}gb</Text>
-              </CenterContainer>
-            </Card>
-          )}
-        </FullContainer>
-        <FullContainer>
-          { loading ? (
-            <LoadingContainer>
-              <ActivityIndicator
-                size={'large'}
-                color="black"
-              />
-            </LoadingContainer>
-          ): (
-            <Card>
-              <MinutesContainer>
-                <InlineView>
-                  <Title>{consumption.voice}</Title>
-                  <Normal
-                    style={{paddingBottom: 12}}
-                  >min</Normal>
-                </InlineView>
-                <Text>utilizados este mês</Text>
-              </MinutesContainer>
-            </Card>
-          )}
-        </FullContainer>
+        <ScrollableMenu selected={selected}>
+          <MenuItem
+            text="meus dados"
+            selected={selected === 0}
+            onPress={() => open(0)}
+          />
+          <MenuItem
+            text="meus minutos"
+            selected={selected === 1}
+            onPress={() => open(1)}
+          />
+        </ScrollableMenu>
+        <ScrollView
+          horizontal
+          ref={scrollRef}
+          disableIntervalMomentum={true}
+          snapToInterval={width}
+          showsHorizontalScrollIndicator={false}
+          onMomentumScrollEnd={handleScroll}
+          style={{marginTop: 10}}
+        >
+          <FullContainer>
+            { loading ? (
+              <LoadingContainer>
+                <ActivityIndicator
+                  size={'large'}
+                  color="black"
+                />
+              </LoadingContainer>
+            ) : (
+              <Card>
+                <AnimatedCircularProgress
+                  size={180}
+                  width={6}
+                  fill={plan.percentage || 0}
+                  rotation={0}
+                  tintColor="#ffffff"
+                  backgroundColor="#3d5875">
+                  {(fill) => (
+                    <>
+                      <InlineView>
+                        <Title>{(plan.available * 0.001).toFixed(1)}</Title>
+                        <Normal
+                          style={{paddingBottom: 12}}
+                        >gb</Normal>
+                      </InlineView>
+                      <Text>disponíveis</Text>
+                    </>
+                  )}
+                </AnimatedCircularProgress>
+                <CenterContainer>
+                  <Text>de {(plan.subscription + plan.topup + plan.bonus) * 0.001}gb</Text>
+                </CenterContainer>
+              </Card>
+            )}
+          </FullContainer>
+          <FullContainer>
+            { loading ? (
+              <LoadingContainer>
+                <ActivityIndicator
+                  size={'large'}
+                  color="black"
+                />
+              </LoadingContainer>
+            ): (
+              <Card>
+                <MinutesContainer>
+                  <InlineView>
+                    <Title>{consumption.voice}</Title>
+                    <Normal
+                      style={{paddingBottom: 12}}
+                    >min</Normal>
+                  </InlineView>
+                  <Text>utilizados este mês</Text>
+                </MinutesContainer>
+              </Card>
+            )}
+          </FullContainer>
+        </ScrollView>
       </ScrollView>
     </Container>
   );
