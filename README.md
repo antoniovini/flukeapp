@@ -2,7 +2,7 @@
 
 Aplicativo desenvolvido como exercício para a Fluke.
 
-## O Desafio
+## O Primeiro Desafio
 
 Crie um app usando React Native Init versão 0.61 ou mais recente (Não utilize o Expo) onde o usuário consiga acompanhar seu consumo de dados e minutos na fluke de maneira instantânea, verificar o histórico de consumo dos dias passados e tirar dúvidas numa tela de ajuda com dúvidas frequentes.
 
@@ -107,3 +107,9 @@ Adicionei também os testes do jest para as requisições da aplicação, deixan
 ![pic2](https://user-images.githubusercontent.com/43019054/103180822-407ad800-4878-11eb-8ce9-ce040272e528.png)<br>
 ![pic1](https://user-images.githubusercontent.com/43019054/103180824-41136e80-4878-11eb-8962-a9a0917effd4.png)<br>
 ![pic3](https://user-images.githubusercontent.com/43019054/103180823-41136e80-4878-11eb-9d6d-e1f903efc052.png)
+
+## O Segundo Desafio
+
+O exercício 2 foi implementado dentro dos próprios testes do Jest.
+
+Pode ser encontrado na pasta *__tests__/Challenge-test.js*.
