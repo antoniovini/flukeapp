@@ -53,6 +53,9 @@ Criei então o projeto no dia 26/12/2020 utilizando o React Native CLI e configu
   
 Como havia recebido dia 22/12/2020 sabia que tinha que entregar até dia 29/12/2020.
 
+Vale ressaltar que não tive como fazer testes para IOS, uma vez que, o único macOS que tenho acesso pertence a um ex colega de trabalho
+que está de viagem e não pode me auxiliar nos testes, mas com um em mãos seria apenas implementar as diferenças entre as plataformas.
+
 ### A Página Inicial
 
 Quando me deparei com a página principal percebi que precisaria de uma *Appbar* (A barra superior) para o aplicativo,
